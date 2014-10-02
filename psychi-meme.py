@@ -78,7 +78,7 @@ def LookChromePasswd():
 		# Print out the result
 		for r in cursor.fetchall():
 			site=r[0]
-			username='\033[31m'+r[1]+'\033[0m'
+			username=r[1]
 
 			# 由于chrome的保护机制
 			# 当你重设了Windows账号密码，随后尝试在Chrome中查看你的密码，密码数据都是不可用，因为“主密码”并不匹配。
@@ -90,6 +90,28 @@ def LookChromePasswd():
 				print '可能原因：Windows账号密码遭重设或SQLite数据库尝试在另外一台电脑上打开'
 
 			printOutResult(site,username,password)
+
+	elif PLATFORM=='Darwin':
+		chrome_passwd_path=os.getenv('HOME')+'/Library/Application\ Support/Google/Chrome/Default/Login\ Data'
+
+		# In case of the database is locked
+		tmp_path='/tmp/LoginData'
+		cmd_cp='cp %s %s' % (chrome_passwd_path,tmp_path)
+		os.system(cmd_cp)
+
+		query_sql='SELECT action_url,username_value,password_value FROM logins'
+		cursor=sqliteQuery(tmp_path,query_sql)
+
+		# Print out the result
+		for r in cursor.fetchall():
+			site=r[0]
+			username='\033[31m'+r[1]+'\033[0m'
+			password=r[2]
+			printOutResult(site,username,password)
+
+		# Delete the file
+		cmd_rm='rm %s' % tmp_path
+		os.system(cmd_rm)
 
 if __name__=='__main__':
 	banner()

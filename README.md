@@ -78,7 +78,9 @@ Windows:
 
 ![chrome_11](screenshots/chrome_11.png)
 
-注：由于chrome的保护机制，当你重设了Windows账号密码，随后尝试在Chrome中查看你的密码，密码数据都是不可用，因为“主密码”并不匹配。同样的，如果把SQLite数据库文件复制，并尝试在另外一台电脑上打开，也一样无法查看。
+注：由于chrome的保护机制，当你重设了Windows账号密码，随后尝试在Chrome中查看你的密码，密码数据都是不可用，因为“主密码”并不匹配。同样的，如果把SQLite数据库文件复制，并尝试在另外一台电脑上打开，也一样无法查看。会报出如下错误：
+
+![chrome_12](screenshots/chrome_12.png)
 
 附上PoC：
 ```python
@@ -102,7 +104,17 @@ for result in cursor.fetchall():
 ```
 
 Mac OS X:
-博文正在努力加载中...
+
+Mac下密码储存在路径`$HOME/Library/Application Support/Google/Chrome/Default/Login Data`。
+不得不说Mac的安全的确做的不错，如果我们直接使用查看Linux的代码，会发现什么密码都看不到：
+
+![chrome_13](screenshots/chrome_13.png)
+
+让我们接着手动看看：
+
+![chrome_14](screenshots/chrome_14.png)
+
+当你试图查看Chrome保存的密码的时候，会要求你输入OS X账户密码了。这个坐等大神读源码分析怎么解决了。
 
 ###0x02 IE
 >
@@ -127,5 +139,6 @@ Mac OS X:
 
 ###0x7 References
 [0].[How Google Chrome Stores Passwords](http://tech.pro/tutorial/828/how-google-chrome-stores-passwords)
-[1].[浏览器保存密码原理及密码查看](http://www.cnseay.com/4059/)
-[2].[浅析Chrome浏览器中保存密码那些事儿](http://os.51cto.com/art/201212/370210.htm)
+[1].[How Browsers Store Your Passwords](http://raidersec.blogspot.com/2013/06/how-browsers-store-your-passwords-and.html)
+[2].[浏览器保存密码原理及密码查看](http://www.cnseay.com/4059/)
+[3].[浅析Chrome浏览器中保存密码那些事儿](http://os.51cto.com/art/201212/370210.htm)
