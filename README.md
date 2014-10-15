@@ -135,7 +135,7 @@ Mac下密码储存在路径`$HOME/Library/Application Support/Google/Chrome/Defa
 博文正在努力加载中...
 
 ###0x7 References
-[0].[How Google Chrome Stores Passwords](http://tech.pro/tutorial/828/how-google-chrome-stores-passwords)
-[1].[How Browsers Store Your Passwords](http://raidersec.blogspot.com/2013/06/how-browsers-store-your-passwords-and.html)
-[2].[浏览器保存密码原理及密码查看](http://www.cnseay.com/4059/)
+[0].[How Google Chrome Stores Passwords](http://tech.pro/tutorial/828/how-google-chrome-stores-passwords)<br>
+[1].[How Browsers Store Your Passwords](http://raidersec.blogspot.com/2013/06/how-browsers-store-your-passwords-and.html)<br>
+[2].[浏览器保存密码原理及密码查看](http://www.cnseay.com/4059/)<br>
 [3].[浅析Chrome浏览器中保存密码那些事儿](http://os.51cto.com/art/201212/370210.htm)
